@@ -37,6 +37,29 @@
         button:hover {
             background-color: #218838;
         }
+
+        .tips-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .tips-container h3 {
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+
+        .tips-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .tips-container li {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -48,6 +71,17 @@
             <input type="text" name="cvv" placeholder="CVV">
             <button type="submit">Procesar Pago</button>
         </form>
+    </div>
+
+    <div class="tips-container">
+        <h3>Consejos para prevenir el Formjacking</h3>
+        <ul>
+            <li>Verifica siempre la URL del sitio antes de ingresar información sensible.</li>
+            <li>Utiliza conexiones seguras (HTTPS) al realizar transacciones en línea.</li>
+            <li>Mantén tu navegador y software de seguridad actualizados.</li>
+            <li>No ingreses información de pago en sitios que no sean de confianza.</li>
+            <li>Considera usar métodos de pago alternativos como PayPal o tarjetas virtuales.</li>
+        </ul>
     </div>
 </body>
 </html>
