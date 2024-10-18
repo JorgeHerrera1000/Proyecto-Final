@@ -15,7 +15,7 @@ class Visitas:
     @classmethod
     def select_all(cls):
         query = "SELECT * FROM visitas LEFT JOIN usuarios ON visitas.visitante = usuarios.idusuarios ORDER BY visitas.raiting DESC;"
-        results = connectToMySQL("parqueaventura").query_db(query)
+        results = connectToMySQL("vulnerable").query_db(query)
         visitas = []
         for result in results:
             visita = cls(result)
@@ -28,7 +28,7 @@ class Visitas:
     @classmethod
     def select_one(cls, id):
         query = "SELECT * FROM visitas LEFT JOIN usuarios ON visitas.visitante = usuarios.idusuarios WHERE idvisitas=%(id)s;"
-        results = connectToMySQL("parqueaventura").query_db(query,{"id":id})
+        results = connectToMySQL("vulnerable").query_db(query,{"id":id})
         visitas = []
 
         for result in results:
@@ -41,24 +41,24 @@ class Visitas:
     @classmethod 
     def insert(cls, data):
         query = """
-        INSERT INTO `parqueaventura`.`visitas`
+        INSERT INTO `vulnerable`.`visitas`
     (`parque`, `fecha`, `raiting`, `detalles`,`visitante`)
     VALUES (%(parque)s, %(fecha)s, %(raiting)s, %(detalles)s,%(visitante)s);
 """
     
         print(data)
-        result = connectToMySQL("parqueaventura").query_db(query, data)
+        result = connectToMySQL("vulnerable").query_db(query, data)
         return result
     
     @classmethod 
     def delete(cls,id):
         query = "DELETE FROM `visitas` WHERE idvisitas=%(id)s;"
-        result =  connectToMySQL("parqueaventura").query_db(query,{"id":id})
+        result =  connectToMySQL("vulnerable").query_db(query,{"id":id})
         return result
     
     @classmethod
     def update(cls, data):
-        query = """UPDATE `parqueaventura`.`visitas`
+        query = """UPDATE `vulnerable`.`visitas`
             SET
             `idvisitas` = %(idvisitas)s,
             `parque` = %(parque)s,
@@ -68,5 +68,5 @@ class Visitas:
             WHERE `idvisitas` = %(idvisitas)s;
         """
         
-        result =  connectToMySQL("parqueaventura").query_db(query, data)
+        result =  connectToMySQL("vulnerable").query_db(query, data)
         return result

@@ -13,7 +13,7 @@ class Usuario:
     @classmethod
     def get_user_email(cls, email):
         query = "SELECT * FROM usuarios WHERE email=%(email)s;"
-        results = connectToMySQL("parqueaventura").query_db(query, {"email": email})
+        results = connectToMySQL("vulnerable").query_db(query, {"email": email})
         usuarios = []
         for usuario in results:
             usuarios.append(cls(usuario))
@@ -35,13 +35,13 @@ class Usuario:
                 %(email)s,
                 %(password)s
             );"""
-        result = connectToMySQL("parqueaventura").query_db(query, data)
+        result = connectToMySQL("vulnerable").query_db(query, data)
         return result
     
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM usuarios;"
-        results = connectToMySQL("parqueaventura").query_db(query)
+        results = connectToMySQL("vulnerable").query_db(query)
         usuarios = []
         for usuario in results:
                 usuarios.append(cls(usuario))
