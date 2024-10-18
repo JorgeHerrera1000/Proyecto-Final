@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Seguro - Inicio de Sesión</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .main-container {
+            display: flex;
+            background-color: white;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 800px;
+            flex-grow: 1;
+        }
+        .login-container, .ad-container {
+            flex: 1;
+            padding: 20px;
+        }
+        .ad-container {
+            background-color: #e6f2ff;
+            border-left: 1px solid #ddd;
+        }
+        h2 {
+            text-align: center;
+            color: #003366;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #003366;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .form-group input[type="submit"] {
+            background-color: #003366;
+            color: white;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #002244;
+        }
+        .warning {
+            background-color: #ffcccc;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 3px;
+            text-align: center;
+        }
+        .ad-image {
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            margin: 0 auto;
+        }
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        footer ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        footer li {
+            margin-bottom: 10px;
+        }
+        .hacked-alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 400px;
+            background-color: #ff0000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 1000;
+            animation: blink 1s infinite;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="hacked-alert">
+        ¡HAS SIDO HACKEADO!
+    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Cuentas</a></li>
+                <li><a href="#">Tarjetas</a></li>
+                <li><a href="#">Préstamos</a></li>
+                <li><a href="#">Inversiones</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="login-container">
+            <h2>Banco Seguro</h2>
+            <form id="login-form" action="/consejos" method="post">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Iniciar Sesión">
+                </div>
+            </form>
+            <div class="warning">
+                <p>¡Atención! Esta es una página de ejemplo para mostrar cómo podría verse un intento de spoofing. No ingrese información real.</p>
+            </div>
+        </div>
+        <div class="ad-container">
+            <h2>Ofertas Especiales</h2>
+            <img src="https://via.placeholder.com/300x200.png?text=Oferta+Especial" alt="Oferta Especial" class="ad-image">
+            <p>¡Obtenga un 5% de interés en su cuenta de ahorros! Oferta por tiempo limitado.</p>
+            <img src="https://via.placeholder.com/300x200.png?text=Nuevo+Producto" alt="Nuevo Producto" class="ad-image">
+            <p>Descubra nuestra nueva tarjeta de crédito con recompensas exclusivas.</p>
+        </div>
+    </div>
+
+    <footer>
+        <h3>Consejos para identificar páginas spoofeables:</h3>
+        <ul>
+            <li>Verifique siempre la URL del sitio web. Los bancos reales usan conexiones seguras (https://).</li>
+            <li>Busque errores ortográficos o gramaticales en el contenido del sitio.</li>
+            <li>Desconfíe de solicitudes urgentes o amenazantes para proporcionar información personal.</li>
+            <li>No haga clic en enlaces de correos electrónicos sospechosos. Acceda directamente al sitio web del banco.</li>
+            <li>Si tiene dudas, contacte a su banco utilizando los números oficiales, no los proporcionados en correos electrónicos.</li>
+            <li>De esta manera se puede evitar que su información personal sea robada por personas malintencionadas.</li>
+            <li>Esta es la manera en que le roban su nombre de usuario y contraseña.</li>
+        </ul>
+    </footer>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Previene el envío del formulario
+            document.querySelector('.overlay').style.display = 'block';
+            document.querySelector('.hacked-alert').style.display = 'block';
+            setTimeout(function() {
+                window.location.href = '/consejos';
+            }, 3000); // Redirige después de 3 segundos
+        });
+    </script>
+</body>
+</html>

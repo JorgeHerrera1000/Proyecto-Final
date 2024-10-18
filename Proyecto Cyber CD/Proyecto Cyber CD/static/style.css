@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    margin-top: 150px;
+}
+
+.flex-items {
+    flex-basis: 40%;
+}
+
+.error {
+    color: red;
+}
+
+.navbar {
+    justify-content: space-between;
+    margin-top: 0px;
+    background-color: gainsboro;
+}
+
+.navbar > div {
+    margin: 10px 25px;
+}
+
+.center {
+    justify-content: center;
+}
+
+table {
+    width: 80%;   
+}
+
+table, th, tr, td {
+    border: 1px black solid;
+}
+
+form > div {
+    margin: 10px 20px;
+}
+.botton_container{
+    margin-top: 150px;
+    display: block;
+    height: 100px;
+    width: 400px;
+    background-color: rgb(99, 94, 94);
+    border: 1px black double;
+
+
+}
+.centradito{
+    padding: 10px;
+    margin-top: 10px;
+}
+.border_box{
+background-color: rgb(255, 255, 255);
+    height: 400px;
+    width: 500px;
+    border: 5px black solid;
+    padding: 5px;
+}
+.coloreando{
+    background-color: rgb(165, 160, 160);
+}
+.margen{
+    margin-top: 50px;
+}

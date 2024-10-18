@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posteos y Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f9;
+        }
+
+        /* Barra de navegación con posteos */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #343a40;
+            padding: 10px 0;
+            overflow-x: auto;
+        }
+
+        .post {
+            flex: 0 0 auto;
+            width: 250px; /* Fija el ancho del recuadro */
+            margin-right: 20px;
+            padding: 10px;
+            background-color: #495057;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            overflow: hidden;
+            max-height: 350px; /* Fija la altura máxima */
+        }
+
+        .post:hover {
+            background-color: #6c757d;
+        }
+
+        .post img {
+            max-width: 50%;
+            border-radius: 50%;
+        }
+
+        .post h3 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .post p {
+            font-size: 14px;
+            line-height: 1.5;
+            max-height: 100px; /* Limita la altura del texto */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Contenedor con selector y botón */
+        .selector-container {
+            padding: 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Footer con login */
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer img {
+            width: 50px;
+            margin-bottom: 10px;
+        }
+
+        .footer button {
+            background-color: #007bff;
+            margin-top: 10px;
+        }
+
+        .footer button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos actualizados para el carrusel */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background-color: #343a40;
+            padding: 20px 0;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .carousel-item a {
+            color: #00ffff; /* Color cyan para los enlaces */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .carousel-item a:hover {
+            color: #ff9900; /* Color naranja al pasar el mouse */
+            text-decoration: underline;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #000;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .carousel-control.left { left: 10px; }
+        .carousel-control.right { right: 10px; }
+    </style>
+</head>
+<body>
+    <!-- Contenedor con selector y botón -->
+    <div class="selector-container">
+        <h2>Selecciona una opción</h2>
+        <select id="option-selector">
+            <option value="/phishing">Phishing</option>
+            <option value="/formjacking">Formjacking</option>
+            <option value="/malware">Malware</option>
+            <option value="/consejos">Consejos</option>
+            <option value="/ddos">DDOS</option>
+            <option value="/xss">XSS</option>
+            <option value="/sql">SQL</option>
+            <option value="/smishing">Smishing</option>
+            <option value="/vishing">Vishing</option>
+            <option value="/whaling">Whaling</option>
+            <option value="/scam">Scam</option>
+            <option value="/ransomware">Ransomware</option>
+            <option value="/botnet">Botnet</option>
+            <option value="/cryptojacking">Cryptojacking</option>
+            <option value="/doxing">Doxing</option>
+            
+        </select>
+        <button onclick="redirect()">Ir a la opción</button>
+    </div>
+
+    <!-- Barra de navegación con posteos -->
+    <div class="navbar">
+        <div class="post" onclick="window.location.href='#persona1'">
+            <img src="https://via.placeholder.com/50" alt="Persona 1">
+            <h3>Post 1</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, facilis. Eum provident doloremque facere velit, eius, ratione ab et dolorum vel dolore sunt magnam dolorem.</p>
+        </div>
+        <div class="post" onclick="window.location.href='#persona2'">
+            <img src="https://via.placeholder.com/50" alt="Persona 2">
+            <h3>Post 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, illum nobis odio perferendis facilis architecto?</p>
+        </div>
+        <div class="post" onclick="window.location.href='#persona3'">
+            <img src="https://via.placeholder.com/50" alt="Persona 3">
+            <h3>Post 3</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate odio quisquam est dicta labore officia.</p>
+        </div>
+        <!-- Añadir más posteos según sea necesario -->
+    </div>
+
+    <!-- Footer con login y logo -->
+    <div class="footer">
+        <img src="https://via.placeholder.com/50" alt="Logo">
+        <p>Inicia sesión para acceder a más funciones</p>
+        <button onclick="window.location.href='login/'">Iniciar sesión</button>
+    </div>
+
+    <!-- Carrusel como footer con enlaces -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-item"><a href="/phishing">Aprende sobre Phishing</a></div>
+            <div class="carousel-item"><a href="/malware">Protégete contra Malware</a></div>
+            <div class="carousel-item"><a href="/consejos">Consejos de Ciberseguridad</a></div>
+            <div class="carousel-item"><a href="/ddos">Entiende los ataques DDoS</a></div>
+            <div class="carousel-item"><a href="/xss">Prevención de XSS</a></div>
+        </div>
+        <a href="#" class="carousel-control left" onclick="moveCarousel(-1); return false;">&lt;</a>
+        <a href="#" class="carousel-control right" onclick="moveCarousel(1); return false;">&gt;</a>
+    </div>
+
+    <script>
+        function redirect() {
+            var selectedOption = document.getElementById('option-selector').value;
+            window.location.href = selectedOption;
+        }
+
+        // Script actualizado para el carrusel
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+
+        function moveCarousel(direction) {
+            currentIndex = (currentIndex + direction + totalItems) % totalItems;
+            const carousel = document.querySelector('.carousel');
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // Mover el carrusel automáticamente cada 5 segundos
+        setInterval(() => moveCarousel(1), 5000);
+
+        // Detener la rotación automática cuando el mouse está sobre el carrusel
+        const carouselContainer = document.querySelector('.carousel-container');
+        let intervalId;
+
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(intervalId);
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+            intervalId = setInterval(() => moveCarousel(1), 5000);
+        });
+
+        // Iniciar la rotación automática
+        intervalId = setInterval(() => moveCarousel(1), 5000);
+    </script>
+
+</body>
+</html>

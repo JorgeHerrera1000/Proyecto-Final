@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva visita</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="flex navbar">
+        <div>
+            <h3>Visita</h3>
+        </div>
+        <div>
+            <a href="/dashboard/">Inicio</a>
+            <a href="/logout/">Cerrar Sesión</a>
+        </div>
+    </div>
+
+    <div>
+        <ul>
+            {% for error_message in error_messages %}
+                <li>{{error_message}}</li>
+            {% endfor %}
+        </ul>
+        <form action="/visitas/crear/" method="post">
+            <div>
+                <label for="event_name">Parque</label>
+                <input type="text" name="parque" id="visita_name">
+            </div>
+            <div>
+                <label for="event_date">Fecha de visita</label>
+                <input type="date" name="fecha" id="visita_date">
+            </div>
+            <div>
+                <label for="event_raiting">Raiting</label>
+                <select name="raiting" id="visita_raiting">
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+                </select>
+            </div>
+            <div>
+                <label for="visita_detail">Detalles:</label>
+                <textarea type="text" name="detalles" id="event_detail"></textarea>
+            </div>
+            <div>
+                <button type="submit">Guardar visita</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+</body>
+</html>

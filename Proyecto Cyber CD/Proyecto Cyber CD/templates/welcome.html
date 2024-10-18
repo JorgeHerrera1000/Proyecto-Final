@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VulnTech</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+    <body>
+    <div class="flex navbar">
+        <div>
+            <h3>Bienvenid@, {{session["nombre"]}}</h3>
+        </div>
+        <div>
+            <a href="/nuevo">Nueva Visita</a>
+            <a href="/logout/">Cerrar Sesión</a>
+        </div>
+    </div>
+    <h1 class="margen"> Mis Visitas</h1>
+    <div class="flex center">
+
+        <table>
+            <thead class="coloreando">
+                <tr>
+                    <th scope="col">Parque</th>
+                    <th scope="col">Raiting</th>
+                    <th scope="col">Fecha de visita</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for visita in visitas %}
+                    {% if session["id"] == visita.visitante %}
+                    <tr>
+                        <td>{{ visita.parque }}</td>
+                        <td>{{ visita.raiting }}</td>
+                        <td>{{ visita.fecha }}</td>
+                        <td>
+                            <a href="/ver/{{ visita.idvisitas }}">Ver</a>
+                            <a href="/editar/{{ visita.idvisitas }}">Editar</a>
+                            <a href="/eliminar/{{ visita.idvisitas }}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+<h1 class="margen">Otras Visitas</h1>
+    <div class="flex center">
+
+        <table>
+            <thead class="coloreando">
+                <tr>
+                    <th scope="col">Parque</th>
+                    <th scope="col">Raiting</th>
+                    <th scope="col">Fecha de visita</th>
+                    <th scope="col">Visitante</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for visita in visitas %}
+                <tr>
+                    <td>{{visita.parque}}</td>
+                    <td>{{visita.raiting}}</td>
+                    <td>{{visita.fecha}}</td>
+                    <td>{{visita.visitante_obj.nombre}} {{visita.visitante_obj.apellido}}</td>
+                    <td>
+                        <a href="/ver/{{visita.idvisitas}}">Ver</a>
+                        {% if session["id"] == visita.visitante %}
+                            <a href="/editar/{{visita.idvisitas}}">Editar</a>
+                            <a href="/eliminar/{{visita.idvisitas}}">Eliminar</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </body>
+</html> 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear evento</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="flex navbar">
+        <div>
+            <h3>Editar la visita</h3>
+        </div>
+        <div>
+            <a href="/dashboard/">Inicio</a>
+            <a href="/logout/">Cerrar Sesión</a>
+        </div>
+    </div>
+
+    <div>
+        <ul>
+            {% for error_message in error_messages%}
+                <li>{{error_message}}</li>
+            {% endfor %}
+        </ul>
+        <form action="/editar/visitas/" method="post">
+            <input type="hidden" name="idvisitas" value="{{visita.idvisitas}}">
+            <div>
+                <label for="event_name">Nombre del parque:</label>
+                <input type="text" name="parque" value="{{visita.parque}}" id="event_name">
+            </div>
+            <div>
+                <label for="event_date">Fecha:</label>
+                <input type="date" name="fecha" value="{{visita.fecha}}" id="event_date">
+            </div>
+            <div>
+                <label for="event_raiting">Raiting:</label>
+                <select value="{{visita.raiting}}" name="raiting" id="event_raiting" >
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+                </select>
+            </div>
+            <div>
+                <label for="event_detail">Detalles:</label>
+                <textarea name="detalles" id="event_detail" value="{{visita.detalles}}">{{visita.detalles}}</textarea>
+            </div>
+            <div>
+                <button type="submit">Guardar cambios a tu visita</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

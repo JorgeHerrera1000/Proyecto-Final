@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitas</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script>
+        function damelike() {
+            let contador = document.getElementById('cuenta');
+            let Likes = parseInt(contador.innerText);
+            cuenta.innerText = Likes + 1;
+            document.getElementById('MeGustaBoton').style.display = 'none';}</script>
+</head>
+<body>
+    <div class="flex navbar">
+        <div>
+            <h2>{{visita.parque}}</h2>
+            <h3>{{visita.visitante_obj.nombre}} {{visita.visitante_obj.apellido}}</h3>
+        </div>
+        <div>
+            <a href="/dashboard/">Inicio</a>
+            <a href="/logout/">Cerrar Sesión</a>
+        </div>
+    </div>
+
+    <div class="flex center">
+
+        <div class="border_box">
+            <h1>{{visita.parque}}</h1>
+            <p>Visitado por: {{visita.visitante_obj.nombre}} {{visita.visitante_obj.apellido}}</p>
+            <p>Fecha de la visita: {{visita.fecha}}</p>
+            <p>Raiting del parque: {{visita.raiting}}</p>
+            <p>Detalles de la visita: {{visita.detalles}}</p>
+            <div class="botton_container">Me gusta:<span id="cuenta" class="centradito">0</span> <div class="centradito"> <button onclick="damelike()" type="button" id="MeGustaBoton">"Me gusta"</button></div>
+        </div>
+    </div>
+
+    </div>
+</body>
+</html>
