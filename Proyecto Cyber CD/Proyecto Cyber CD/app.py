@@ -39,6 +39,8 @@ def showvuln2():
 def showvuln3():
     return render_template("malware.html")
 
+
+
 @app.route("/register/", methods=["POST"])
 def register():
     form = request.form.to_dict()
@@ -59,6 +61,10 @@ def register():
 @app.route("/consejos")
 def consejos():
     return render_template("consejos.html")
+
+@app.route("/qr")
+def qr():
+    return render_template("qr.html")   
 
 
 @app.route("/spoofing")
