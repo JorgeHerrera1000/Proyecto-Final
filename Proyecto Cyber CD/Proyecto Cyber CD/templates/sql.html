@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inyección SQL: Explicación y Prevención</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .info-box {
+            background-color: #ffffff;
+            border-left: 5px solid #f39c12;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        .prevention-list {
+            list-style-type: none;
+            padding-left: 0;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .prevention-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .prevention-list li::before {
+            content: "🔒";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+        #home-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+        #home-button:hover {
+            background-color: #2980b9;
+        }
+        .code-example {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inyección SQL: Explicación y Prevención</h1>
+    
+    <div class="info-box">
+        <h2>¿Qué es la Inyección SQL?</h2>
+        <p>La inyección SQL es una técnica de ataque utilizada para explotar vulnerabilidades en aplicaciones que interactúan con bases de datos. Los atacantes insertan código SQL malicioso en las entradas de la aplicación para manipular o acceder a datos no autorizados.</p>
+    </div>
+
+    <h2>Ejemplo de Inyección SQL</h2>
+    <div class="code-example">
+        <p>Consulta vulnerable:</p>
+        <code>SELECT * FROM usuarios WHERE nombre = '" + nombreUsuario + "' AND contraseña = '" + contraseña + "';</code>
+        <p>Ataque de inyección:</p>
+        <code>nombreUsuario: admin' --<br>contraseña: [cualquier cosa]</code>
+        <p>Resultado:</p>
+        <code>SELECT * FROM usuarios WHERE nombre = 'admin' -- ' AND contraseña = '[cualquier cosa]';</code>
+    </div>
+
+    <h2>Cómo prevenir la Inyección SQL</h2>
+    <ul class="prevention-list">
+        <li>Utiliza consultas parametrizadas o preparadas.</li>
+        <li>Implementa el principio de mínimo privilegio en la base de datos.</li>
+        <li>Valida y sanitiza todas las entradas de usuario.</li>
+        <li>Utiliza ORM (Object-Relational Mapping) cuando sea posible.</li>
+        <li>Escapa caracteres especiales en las entradas de usuario.</li>
+        <li>Implementa una capa de abstracción para acceder a la base de datos.</li>
+        <li>Mantén actualizado el software de la base de datos y la aplicación.</li>
+        <li>Utiliza herramientas de escaneo de vulnerabilidades regularmente.</li>
+    </ul>
+
+    <a href="{{ url_for('home') }}" id="home-button">Volver a Inicio</a>
+</body>
+</html>

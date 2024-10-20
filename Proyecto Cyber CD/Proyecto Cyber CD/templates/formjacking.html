@@ -60,6 +60,22 @@
         .tips-container li {
             margin-bottom: 10px;
         }
+
+        .home-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -83,5 +99,7 @@
             <li>Considera usar métodos de pago alternativos como PayPal o tarjetas virtuales.</li>
         </ul>
     </div>
+
+    <a href="{{ url_for('home') }}" class="home-button">Volver a Inicio</a>
 </body>
 </html>

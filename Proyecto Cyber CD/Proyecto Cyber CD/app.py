@@ -41,6 +41,8 @@ def showvuln3():
 
 
 
+
+
 @app.route("/register/", methods=["POST"])
 def register():
     form = request.form.to_dict()
@@ -66,6 +68,14 @@ def consejos():
 def qr():
     return render_template("qr.html")   
 
+@app.route("/ddos")
+def ddos():
+    return render_template("ddos.html")
+
+@app.route("/xss")
+def xss():
+    return render_template("xss.html")
+
 
 @app.route("/spoofing")
 def spoofing():
@@ -74,6 +84,10 @@ def spoofing():
 @app.route("/hackeado")
 def hackeado():
     return render_template("hackeado.html")
+
+@app.route("/sql")
+def sql():
+    return render_template("sql.html")
 
 # Recive la info del formulario de login   
 @app.route("/login/", methods=["POST"])

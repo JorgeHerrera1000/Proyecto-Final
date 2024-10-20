@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ataques DDoS y su Prevención</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .info-box {
+            background-color: #ffffff;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        .prevention-list {
+            list-style-type: none;
+            padding-left: 0;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .prevention-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .prevention-list li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        #home-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+        #home-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ataques DDoS y Cómo Prevenirlos</h1>
+    
+    <div class="info-box">
+        <h2>¿Qué es un ataque DDoS?</h2>
+        <p>Un ataque DDoS (Distributed Denial of Service) es un intento malicioso de interrumpir el tráfico normal de un servidor, servicio o red objetivo, abrumándolo con una avalancha de tráfico de Internet desde múltiples fuentes.</p>
+    </div>
+
+    <h2>Cómo funciona un ataque DDoS</h2>
+    <ul class="prevention-list">
+        <li>Los atacantes configuran múltiples computadoras para enviar un gran volumen de tráfico a la víctima.</li>
+        <li>Estos ataques pueden ser automatizados con lo que solo se utilizan bots.</li>
+        <li>El objetivo es una dirección IP o un dominio web.</li>
+        <li>Si el ataque es exitoso, el servicio se caerá y no será posible acceder a él.</li>
+    </ul>
+
+    <h2>Cómo prevenir ataques DDoS</h2>
+    <ul class="prevention-list">
+        <li>Utiliza servicios de mitigación DDoS especializados.</li>
+        <li>Configura correctamente los routers y switches para filtrar paquetes maliciosos.</li>
+        <li>Mantén todos los sistemas y software actualizados.</li>
+        <li>Monitorea constantemente el tráfico de red para detectar anomalías.</li>
+        <li>Utiliza un WAF para proteger tu sitio web. (Firewall de aplicaciones web).</li>
+    </ul>
+
+    <a href="{{ url_for('home') }}" id="home-button">Volver a Inicio</a>
+</body>
+</html>
