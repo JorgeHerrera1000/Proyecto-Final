@@ -6,19 +6,19 @@
     <title>VulnTech</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
-    <body>
+<body>
     <div class="flex navbar">
         <div>
-            <h3>Bienvenid@, {{session["nombre"]}}</h3>
+            <h3>Bienvenid@, {{ session["nombre"] }}</h3>
         </div>
         <div>
             <a href="/nuevo">Nueva Visita</a>
             <a href="/logout/">Cerrar Sesión</a>
         </div>
     </div>
-    <h1 class="margen"> Mis Visitas</h1>
+    
+    <h1 class="margen">Mis Visitas</h1>
     <div class="flex center">
-
         <table>
             <thead class="coloreando">
                 <tr>
@@ -29,27 +29,32 @@
                 </tr>
             </thead>
             <tbody>
-                {% for visita in visitas %}
-                    {% if session["id"] == visita.visitante %}
+                {% if visitas | length == 0 %}
                     <tr>
-                        <td>{{ visita.parque }}</td>
-                        <td>{{ visita.raiting }}</td>
-                        <td>{{ visita.fecha }}</td>
-                        <td>
-                            <a href="/ver/{{ visita.idvisitas }}">Ver</a>
-                            <a href="/editar/{{ visita.idvisitas }}">Editar</a>
-                            <a href="/eliminar/{{ visita.idvisitas }}">Eliminar</a>
-                        </td>
+                        <td colspan="4">No tienes visitas registradas.</td>
                     </tr>
-                    {% endif %}
-                {% endfor %}
+                {% else %}
+                    {% for visita in visitas %}
+                        {% if session["id"] == visita.visitante %}
+                        <tr>
+                            <td>{{ visita.parque }}</td>
+                            <td>{{ visita.raiting }}</td>
+                            <td>{{ visita.fecha }}</td>
+                            <td>
+                                <a href="/ver/{{ visita.idvisitas }}">Ver</a>
+                                <a href="/editar/{{ visita.idvisitas }}">Editar</a>
+                                <a href="/eliminar/{{ visita.idvisitas }}">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </tbody>
         </table>
-
     </div>
-<h1 class="margen">Otras Visitas</h1>
-    <div class="flex center">
 
+    <h1 class="margen">Otras Visitas</h1>
+    <div class="flex center">
         <table>
             <thead class="coloreando">
                 <tr>
@@ -63,21 +68,26 @@
             <tbody>
                 {% for visita in visitas %}
                 <tr>
-                    <td>{{visita.parque}}</td>
-                    <td>{{visita.raiting}}</td>
-                    <td>{{visita.fecha}}</td>
-                    <td>{{visita.visitante_obj.nombre}} {{visita.visitante_obj.apellido}}</td>
+                    <td>{{ visita.parque }}</td>
+                    <td>{{ visita.raiting }}</td>
+                    <td>{{ visita.fecha }}</td>
+                    <td>{{ visita.visitante_obj.nombre }} {{ visita.visitante_obj.apellido }}</td>
                     <td>
-                        <a href="/ver/{{visita.idvisitas}}">Ver</a>
+                        <a href="/ver/{{ visita.idvisitas }}">Ver</a>
                         {% if session["id"] == visita.visitante %}
-                            <a href="/editar/{{visita.idvisitas}}">Editar</a>
-                            <a href="/eliminar/{{visita.idvisitas}}">Eliminar</a>
+                            <a href="/editar/{{ visita.idvisitas }}">Editar</a>
+                            <a href="/eliminar/{{ visita.idvisitas }}">Eliminar</a>
                         {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        </div>
-    </body>
-</html> 
+    </div>
+
+    <!-- Enlace para volver a la página principal -->
+    <div class="flex center">
+        <a href="/home" class="boton-regresar">Volver a la Página Principal</a>
+    </div>
+</body>
+</html>

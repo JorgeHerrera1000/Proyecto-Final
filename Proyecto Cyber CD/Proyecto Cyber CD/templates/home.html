@@ -11,6 +11,36 @@
             padding: 0;
             box-sizing: border-box;
             background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Encabezado */
+        header {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin: 5px 0 0;
+        }
+
+        /* Contenedor con selector y botón */
+        .selector-container {
+            padding: 20px;
+            background-color: #ffffff;
+            text-align: center;
+            flex: 1; /* Para ocupar el espacio disponible */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         /* Barra de navegación con posteos */
@@ -59,34 +89,6 @@
             text-overflow: ellipsis;
         }
 
-        /* Contenedor con selector y botón */
-        .selector-container {
-            padding: 20px;
-            background-color: #ffffff;
-            text-align: center;
-        }
-
-        select {
-            padding: 10px;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #218838;
-        }
-
         /* Footer con login */
         .footer {
             width: 100%;
@@ -95,8 +97,6 @@
             color: white;
             padding: 20px;
             text-align: center;
-            position: relative;
-            bottom: 0;
         }
 
         .footer img {
@@ -107,6 +107,12 @@
         .footer button {
             background-color: #007bff;
             margin-top: 10px;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .footer button:hover {
@@ -163,9 +169,16 @@
     </style>
 </head>
 <body>
+    <!-- Encabezado -->
+    <header>
+        <h1>Bienvenido a Vulnerable</h1>
+        <p>Explora y aprende sobre ciberseguridad</p>
+    </header>
+
     <!-- Contenedor con selector y botón -->
     <div class="selector-container">
         <h2>Selecciona una opción</h2>
+        <label for="option-selector">Opciones:</label>
         <select id="option-selector">
             <option value="/phishing">Phishing</option>
             <option value="/formjacking">Formjacking</option>
@@ -183,7 +196,6 @@
             <option value="/botnet">Botnet</option>
             <option value="/cryptojacking">Cryptojacking</option>
             <option value="/doxing">Doxing</option>
-            
         </select>
         <button onclick="redirect()">Ir a la opción</button>
     </div>
@@ -191,28 +203,28 @@
     <!-- Barra de navegación con posteos -->
     <div class="navbar">
         <div class="post" onclick="window.location.href='#persona1'">
-            <img src="https://via.placeholder.com/50" alt="Persona 1">
-            <h3>Post 1</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, facilis. Eum provident doloremque facere velit, eius, ratione ab et dolorum vel dolore sunt magnam dolorem.</p>
+            <img src="https://thispersondoesnotexist.com/" alt="Imagen de Persona 1">
+            <h3>Ana</h3>
+            <p>Mantén tu software actualizado. Cada vez que aparece una actualización, es como un escudo nuevo para protegerte. Los hackers buscan vulnerabilidades en versiones antiguas, así que no te olvides de hacer esos clics de actualización.</p>
         </div>
         <div class="post" onclick="window.location.href='#persona2'">
-            <img src="https://via.placeholder.com/50" alt="Persona 2">
-            <h3>Post 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, illum nobis odio perferendis facilis architecto?</p>
+            <img src="https://thispersondoesnotexist.com/" alt="Imagen de Persona 2">
+            <h3>Sofia</h3>
+            <p>Activa la autenticación de dos factores en tus cuentas. Es un pequeño paso que marca una gran diferencia. Así, aunque alguien adivine tu contraseña, necesitará un código extra que solo tú tienes.</p>
         </div>
         <div class="post" onclick="window.location.href='#persona3'">
-            <img src="https://via.placeholder.com/50" alt="Persona 3">
-            <h3>Post 3</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate odio quisquam est dicta labore officia.</p>
+            <img src="https://thispersondoesnotexist.com/" alt="Imagen de Persona 3">
+            <h3>Luis</h3>
+            <p>Siempre uso contraseñas largas y complejas. La clave es combinar letras, números y símbolos. Y si puedo, uso un gestor de contraseñas para no olvidarlas. ¡Nunca reutilices contraseñas en diferentes cuentas!</p>
         </div>
         <!-- Añadir más posteos según sea necesario -->
     </div>
 
     <!-- Footer con login y logo -->
     <div class="footer">
-        <img src="https://via.placeholder.com/50" alt="Logo">
+        <img src="https://thispersondoesnotexist.com/" alt="Logo">
         <p>Inicia sesión para acceder a más funciones</p>
-        <button onclick="window.location.href='login/'">Iniciar sesión</button>
+        <button aria-label="Iniciar sesión" onclick="window.location.href='login/'">Iniciar sesión</button>
     </div>
 
     <!-- Carrusel como footer con enlaces -->
@@ -248,22 +260,8 @@
 
         // Mover el carrusel automáticamente cada 5 segundos
         setInterval(() => moveCarousel(1), 5000);
-
-        // Detener la rotación automática cuando el mouse está sobre el carrusel
-        const carouselContainer = document.querySelector('.carousel-container');
-        let intervalId;
-
-        carouselContainer.addEventListener('mouseenter', () => {
-            clearInterval(intervalId);
-        });
-
-        carouselContainer.addEventListener('mouseleave', () => {
-            intervalId = setInterval(() => moveCarousel(1), 5000);
-        });
-
-        // Iniciar la rotación automática
-        intervalId = setInterval(() => moveCarousel(1), 5000);
     </script>
-
 </body>
 </html>
+
+

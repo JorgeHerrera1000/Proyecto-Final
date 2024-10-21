@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Colores Fuertes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #2a2a2a; /* Fondo oscuro */
+            color: #f5f5f5; /* Texto claro */
+        }
+
+        /* Barra de navegación con posteos en grid */
+        .navbar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #333; /* Fondo oscuro */
+            color: #fff;
+            margin-bottom: 50px;
+        }
+
+        .post {
+            padding: 20px;
+            background-color: #3a3a3a; /* Fondo oscuro para los posts */
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .post:hover {
+            background-color: #505050; /* Variación de gris oscuro */
+        }
+
+        .post img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        .post h3 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .post p {
+            font-size: 14px;
+            line-height: 1.5;
+            overflow: hidden;
+        }
+
+        /* Contenedor con selector */
+        .selector-container {
+            padding: 20px;
+            background-color: #444; /* Fondo oscuro para el selector */
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+            border: 2px solid #ff6600; /* Naranja brillante */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6600; /* Naranja fuerte */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e65c00; /* Naranja más oscuro */
+        }
+
+        /* Carrusel */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background-color: #555;
+            padding: 20px 0;
+            margin-bottom: 50px;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .carousel-item a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        .carousel-item a:hover {
+            color: #ff9900;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+        }
+
+        .carousel-control.left {
+            left: 10px;
+        }
+
+        .carousel-control.right {
+            right: 10px;
+        }
+
+        /* Footer con Login fijo */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer img {
+            width: 50px;
+        }
+
+        .footer h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .footer button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .footer button:hover {
+            background-color: #e65c00;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor con selector y botón -->
+    <div class="selector-container">
+        <h2>Selecciona una opción:</h2>
+        <select id="option-selector">
+            <option value="/phishing">Phishing</option>
+            <option value="/malware">Malware</option>
+            <option value="/consejos">Consejos</option>
+        </select>
+        <button onclick="redirect()">Ir a la opción</button>
+    </div>
+
+    <!-- Barra de navegación con posteos -->
+    <div class="navbar">
+        <div class="post" onclick="window.location.href='#post1'">
+            <img src="https://via.placeholder.com/50" alt="Post 1">
+            <h3>Post 1</h3>
+            <p>Descripción breve sobre el contenido del post.</p>
+        </div>
+        <div class="post" onclick="window.location.href='#post2'">
+            <img src="https://via.placeholder.com/50" alt="Post 2">
+            <h3>Post 2</h3>
+            <p>Descripción breve sobre el contenido del post.</p>
+        </div>
+        <div class="post" onclick="window.location.href='#post3'">
+            <img src="https://via.placeholder.com/50" alt="Post 3">
+            <h3>Post 3</h3>
+            <p>Descripción breve sobre el contenido del post.</p>
+        </div>
+    </div>
+
+    <!-- Footer con Login -->
+    <footer class="footer">
+        <div>
+            <img src="https://via.placeholder.com/60" alt="Logo">
+            <h4>Inicia sesión para más contenido</h4>
+        </div>
+        <button onclick="window.location.href='/login'">Iniciar Sesión</button>
+    </footer>
+
+    <script>
+        function redirect() {
+            var option = document.getElementById('option-selector').value;
+            window.location.href = option;
+        }
+
+        var currentSlide = 0;
+
+        function moveCarousel(direction) {
+            const carousel = document.querySelector('.carousel');
+            const totalItems = document.querySelectorAll('.carousel-item').length;
+            currentSlide = (currentSlide + direction + totalItems) % totalItems;
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+    </script>
+
+</body>
+</html>
+
